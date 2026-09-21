@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>菜品SOP管理后台原型</title>
+  <link rel="stylesheet" href="assets/prototype.css">
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">SOP</div>
+        <div>
+          <div class="brand-title">味来餐饮学院</div>
+          <div class="brand-sub">菜品标准化后台</div>
+        </div>
+      </div>
+      <nav class="nav" aria-label="后台导航">
+        <button class="active" data-view="dashboard">工作台</button>
+        <button data-view="people">人员维护</button>
+        <button data-view="categories">分类管理</button>
+        <button data-view="sops">SOP管理</button>
+        <button data-view="stats">行为统计</button>
+        <button data-view="settings">系统设置</button>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 id="pageTitle">工作台</h1>
+          <div class="muted">演示门店：广州旗舰店</div>
+        </div>
+        <div class="userbar">
+          <a class="demo-link" href="mobile.html" target="_blank">打开小程序原型</a>
+          <span>企业管理员：陈经理</span>
+        </div>
+      </header>
+
+      <div class="content">
+        <section class="view active" id="dashboard">
+          <div class="section-title">
+            <div>
+              <h2>运营概览</h2>
+              <p>展示人员、菜品 SOP、学习行为和待完善资料。</p>
+            </div>
+            <button class="btn" data-toast="已刷新今日学习数据">刷新数据</button>
+          </div>
+          <div class="grid kpis">
+            <div class="card"><div class="kpi-label">授权人员</div><div class="kpi-value">48</div><div class="kpi-note">本周新增 6 人</div></div>
+            <div class="card"><div class="kpi-label">菜品 SOP</div><div class="kpi-value">126</div><div class="kpi-note">已覆盖 8 个分类</div></div>
+            <div class="card"><div class="kpi-label">今日查看</div><div class="kpi-value">312</div><div class="kpi-note">较昨日 +18%</div></div>
+            <div class="card"><div class="kpi-label">视频播放</div><div class="kpi-value">86</div><div class="kpi-note">人均 1.8 次</div></div>
+          </div>
+          <div class="grid two" style="margin-top:16px">
+            <div class="card">
+              <div class="toolbar"><h3>最近学习动态</h3><span class="tag">实时记录</span></div>
+              <div class="timeline">
+                <div class="timeline-item"><div class="timeline-dot"></div><div><b>李明 138****1024</b> 查看了《番茄炒蛋》SOP，播放视频 2 次<br><span class="muted">2 分钟前</span></div></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><div><b>周倩 139****8831</b> 完成《烧腊切配标准》学习<br><span class="muted">11 分钟前</span></div></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><div><b>王勇 136****7719</b> 搜索“面店汤底”并收藏 SOP<br><span class="muted">28 分钟前</span></div></div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="toolbar"><h3>待完善 SOP</h3><button class="btn secondary" data-view-jump="sops">去处理</button></div>
+              <table>
+                <thead><tr><th>菜品</th><th>问题</th><th>负责人</th></tr></thead>
+                <tbody>
+                  <tr><td>蜜汁叉烧</td><td><span class="status red">缺少视频</span></td><td>黄师傅</td></tr>
+                  <tr><td>云吞面汤底</td><td><span class="status red">图片未上传</span></td><td>刘主管</td></tr>
+                  <tr><td>快餐例汤</td><td><span class="status">待复核</span></td><td>陈经理</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="people">
+          <div class="section-title">
+            <div>
+              <h2>人员维护</h2>
+              <p>手机号名单决定小程序能否登录，适合几十人规模的企业内训。</p>
+            </div>
+            <div class="actions">
+              <button class="btn secondary" data-toast="已读取 Excel：成功识别 12 个手机号，待确认导入">批量导入</button>
+              <button class="btn" data-modal="personModal">新增人员</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="toolbar">
+              <div class="filters">
+                <input class="field" value="手机号 / 姓名 / 门店">
+                <select class="select"><option>全部状态</option><option>启用</option><option>停用</option></select>
+                <select class="select"><option>全部岗位</option><option>厨师</option><option>学员</option><option>店长</option></select>
+              </div>
+              <span class="muted">管理员联系电话：138-0000-0000</span>
+            </div>
+            <table>
+              <thead><tr><th>姓名</th><th>手机号</th><th>岗位</th><th>门店/分组</th><th>状态</th><th>最近登录</th><th>操作</th></tr></thead>
+              <tbody>
+                <tr><td>李明</td><td>138****1024</td><td>厨师</td><td>广州旗舰店 / 快餐组</td><td><span class="status">启用</span></td><td>今天 14:21</td><td><button class="btn ghost" data-toast="已打开李明的人员详情">查看</button></td></tr>
+                <tr><td>周倩</td><td>139****8831</td><td>学员</td><td>深圳南山店 / 烧腊组</td><td><span class="status">启用</span></td><td>今天 13:50</td><td><button class="btn ghost" data-toast="已停用周倩的小程序访问权限">停用</button></td></tr>
+                <tr><td>王勇</td><td>136****7719</td><td>店长</td><td>佛山禅城店 / 面店组</td><td><span class="status off">停用</span></td><td>9月18日</td><td><button class="btn ghost" data-toast="已重新启用王勇">启用</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="view" id="categories">
+          <div class="section-title">
+            <div>
+              <h2>分类管理</h2>
+              <p>后台维护的分类会同步到小程序首页和筛选项，不在小程序写死。</p>
+            </div>
+            <button class="btn" data-toast="已新增分类：茶饮">新增分类</button>
+          </div>
+          <div class="grid three">
+            <div class="card">
+              <h3>小程序分类预览</h3>
+              <p class="muted">当前展示：快餐、烧腊、面店。客户后续改分类时，小程序跟随后台数据。</p>
+              <div class="mini-tabs" style="margin-top:16px"><button class="active">快餐</button><button>烧腊</button><button>面店</button></div>
+            </div>
+            <div class="card" style="grid-column: span 2">
+              <div class="category-list">
+                <div class="category-row"><div><b>快餐</b><br><span class="muted">18 个 SOP，示例：番茄炒蛋、快餐例汤</span></div><div class="actions"><span class="status">启用</span><button class="btn secondary" data-toast="已打开快餐分类编辑">编辑</button></div></div>
+                <div class="category-row"><div><b>烧腊</b><br><span class="muted">22 个 SOP，示例：蜜汁叉烧、烧鸭切配</span></div><div class="actions"><span class="status">启用</span><button class="btn secondary" data-toast="已打开烧腊分类编辑">编辑</button></div></div>
+                <div class="category-row"><div><b>面店</b><br><span class="muted">15 个 SOP，示例：云吞面汤底、竹升面出品</span></div><div class="actions"><span class="status">启用</span><button class="btn secondary" data-toast="已打开面店分类编辑">编辑</button></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="sops">
+          <div class="section-title">
+            <div>
+              <h2>SOP 管理</h2>
+              <p>支持手动录入、Excel 导入、图片和视频上传。右侧展示附件格式的菜品标准预览。</p>
+            </div>
+            <div class="actions">
+              <button class="btn secondary" data-toast="Excel 导入模板已准备：菜式名称、类别、主料、制作方法等字段">Excel导入</button>
+              <button class="btn" data-toast="已保存番茄炒蛋 SOP 草稿">保存SOP</button>
+            </div>
+          </div>
+          <div class="sop-layout">
+            <div class="card">
+              <div class="sop-form">
+                <div class="form-row"><label>菜式名称</label><input class="field" value="番茄炒蛋"></div>
+                <div class="form-row"><label>类别名称</label><select class="select"><option>快餐</option><option>烧腊</option><option>面店</option></select></div>
+                <div class="form-row"><label>器皿标准</label><input class="field" value="10寸白色浅盘，出品边缘洁净"></div>
+                <div class="form-row"><label>主料标准</label><textarea class="field">番茄500g
+鸡蛋10个</textarea></div>
+                <div class="form-row"><label>辅料标准</label><textarea class="field">葱白碎10g、葱花5g</textarea></div>
+                <div class="form-row"><label>制作要点</label><textarea class="field">1. 全程小火，蛋液不能炒老。
+2. 番茄炒出砂，汤汁自然浓稠。</textarea></div>
+                <div class="form-row"><label>制作方法</label><textarea class="field">1. 热锅冷油，下蛋液小火滑八成熟，备用。
+2. 锅入少许底油，小火下入葱白碎炒香后下番茄炒出砂。
+3. 下入少许清水，入调料盐3g、白糖65g、番茄沙司150g，轻轻拌匀。
+4. 下入炒好的鸡蛋，勾中芡翻拌均匀淋亮油，出锅撒葱花即可。</textarea></div>
+                <div class="form-row"><label>媒体资料</label><div class="upload-grid"><div class="upload">主、辅料图片<br>点击上传</div><div class="upload">配料图片<br>点击上传</div><div class="upload">成品图片<br>点击上传</div><div class="upload">教学视频<br>点击上传</div></div></div>
+              </div>
+            </div>
+            <div class="sop-preview">
+              <div class="title">炒上好菜品标准</div>
+              <div class="sop-table">
+                <div class="sop-cell label">【菜式名称】</div><div class="sop-cell">番茄炒蛋</div><div class="sop-cell media" style="grid-row:span 2">主、辅料图片</div>
+                <div class="sop-cell label">【器皿标准】</div><div class="sop-cell">10寸白色浅盘</div>
+                <div class="sop-cell label">【主料标准】</div><div class="sop-cell">番茄500g<br>鸡蛋10个</div><div class="sop-cell media" style="grid-row:span 2">配料图片</div>
+                <div class="sop-cell label">【辅料标准】</div><div class="sop-cell">葱白碎10g、葱花5g</div>
+                <div class="sop-cell label">【制作要点】</div><div class="sop-cell tall">1. 全程小火。蛋液不能炒老。<br>2. 番茄炒出砂。</div><div class="sop-cell media tall">成品图片</div>
+                <div class="sop-cell label">【制作方法】</div><div class="sop-cell wide tall">1. 热锅冷油，下蛋液小火滑八成熟，备用。<br>2. 锅入少许底油，下番茄炒出砂。<br>3. 下调料轻轻拌匀。<br>4. 下鸡蛋翻拌淋亮油，出锅撒葱花。</div>
+                <div class="sop-cell label last">【保质期】</div><div class="sop-cell last">当餐出品</div><div class="sop-cell last">【SOP编号】 SOP-KC-001</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="stats">
+          <div class="section-title">
+            <div>
+              <h2>行为统计</h2>
+              <p>按手机号追踪查看内容、查看次数、视频播放次数和最近学习时间。</p>
+            </div>
+            <button class="btn secondary" data-toast="统计报表已导出为 Excel">导出报表</button>
+          </div>
+          <div class="card">
+            <table>
+              <thead><tr><th>手机号</th><th>姓名</th><th>查看内容</th><th>查看次数</th><th>视频播放</th><th>最近学习</th><th>风险提示</th></tr></thead>
+              <tbody>
+                <tr><td>138****1024</td><td>李明</td><td>番茄炒蛋、快餐例汤</td><td>12</td><td>5</td><td>今天 14:21</td><td><span class="status">正常</span></td></tr>
+                <tr><td>139****8831</td><td>周倩</td><td>烧腊切配标准</td><td>7</td><td>3</td><td>今天 13:50</td><td><span class="status">正常</span></td></tr>
+                <tr><td>136****7719</td><td>王勇</td><td>云吞面汤底</td><td>21</td><td>12</td><td>昨天 20:18</td><td><span class="status red">频繁访问</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="view" id="settings">
+          <div class="section-title">
+            <div>
+              <h2>系统设置</h2>
+              <p>配置未授权提示、管理员联系电话和内容防泄露策略。</p>
+            </div>
+            <button class="btn" data-toast="系统设置已保存，小程序提示同步更新">保存设置</button>
+          </div>
+          <div class="grid two">
+            <div class="card">
+              <div class="sop-form">
+                <div class="form-row"><label>企业名称</label><input class="field" value="味来餐饮学院"></div>
+                <div class="form-row"><label>管理员电话</label><input class="field" value="138-0000-0000"></div>
+                <div class="form-row"><label>未授权提示</label><textarea class="field">当前手机号未开通访问权限，请联系后台管理员：138-0000-0000</textarea></div>
+              </div>
+            </div>
+            <div class="card">
+              <h3>防泄露策略展示</h3>
+              <p class="muted">真实系统不能彻底阻止外部拍摄或系统级录屏，演示中展示可落地的风险降低手段。</p>
+              <table>
+                <tbody>
+                  <tr><td>动态水印</td><td><span class="status">开启</span></td></tr>
+                  <tr><td>访问日志</td><td><span class="status">开启</span></td></tr>
+                  <tr><td>视频播放统计</td><td><span class="status">开启</span></td></tr>
+                  <tr><td>异常频次提醒</td><td><span class="status">开启</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-mask" id="personModal">
+    <div class="modal">
+      <h3>新增授权人员</h3>
+      <div class="sop-form">
+        <input class="field" value="姓名：赵师傅">
+        <input class="field" value="手机号：13700008888">
+        <select class="select"><option>岗位：厨师</option><option>学员</option><option>店长</option></select>
+        <select class="select"><option>分组：快餐组</option><option>烧腊组</option><option>面店组</option></select>
+        <div class="actions" style="justify-content:flex-end"><button class="btn secondary" data-close-modal>取消</button><button class="btn" data-close-modal data-toast="已新增赵师傅，小程序可用该手机号授权登录">确认新增</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const titles = {
+      dashboard: '工作台',
+      people: '人员维护',
+      categories: '分类管理',
+      sops: 'SOP管理',
+      stats: '行为统计',
+      settings: '系统设置'
+    };
+    const toast = document.querySelector('#toast');
+    let toastTimer;
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
+    }
+
+    function showView(id) {
+      document.querySelectorAll('.view').forEach(view => view.classList.toggle('active', view.id === id));
+      document.querySelectorAll('.nav button').forEach(btn => btn.classList.toggle('active', btn.dataset.view === id));
+      document.querySelector('#pageTitle').textContent = titles[id];
+    }
+
+    document.addEventListener('click', event => {
+      const nav = event.target.closest('[data-view]');
+      if (nav) showView(nav.dataset.view);
+
+      const jump = event.target.closest('[data-view-jump]');
+      if (jump) showView(jump.dataset.viewJump);
+
+      const message = event.target.closest('[data-toast]')?.dataset.toast;
+      if (message) showToast(message);
+
+      const modalButton = event.target.closest('[data-modal]');
+      if (modalButton) document.querySelector('#' + modalButton.dataset.modal).classList.add('show');
+
+      if (event.target.closest('[data-close-modal]')) {
+        document.querySelectorAll('.modal-mask').forEach(mask => mask.classList.remove('show'));
+      }
+
+      if (event.target.classList.contains('modal-mask')) {
+        event.target.classList.remove('show');
+      }
+    });
+  </script>
+</body>
+</html>

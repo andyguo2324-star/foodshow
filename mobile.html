@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>菜品SOP微信小程序原型</title>
+  <link rel="stylesheet" href="assets/prototype.css">
+</head>
+<body>
+  <main class="mobile-page">
+    <section class="phone" aria-label="微信小程序模拟器">
+      <div class="phone-screen">
+        <div class="mini-status"><span>9:41</span><span>微信</span><span>100%</span></div>
+        <div class="mini-nav">
+          <button id="backBtn" aria-label="返回">‹</button>
+          <strong id="miniTitle">菜品SOP</strong>
+          <button aria-label="更多">⋯</button>
+        </div>
+        <div class="mini-body">
+          <section class="mini-view active" id="loginView">
+            <div class="login-hero">
+              <div class="login-logo">SOP</div>
+              <h1>菜品标准学习</h1>
+              <p>授权微信手机号后，系统会与后台人员名单匹配。匹配成功后才能查看菜品 SOP 和视频。</p>
+            </div>
+            <div class="login-actions">
+              <button class="btn" id="loginOk">使用已授权手机号登录</button>
+              <button class="btn secondary" id="loginFail">模拟未授权手机号</button>
+              <div class="notice" id="loginNotice" hidden>当前手机号未开通访问权限，请联系后台管理员：138-0000-0000</div>
+            </div>
+          </section>
+
+          <section class="mini-view" id="homeView">
+            <div class="mini-search">搜索菜品、SOP编号、制作要点</div>
+            <div class="mini-tabs" id="categoryTabs"></div>
+            <div class="dish-list" id="dishList"></div>
+          </section>
+
+          <section class="mini-view watermark-area" id="detailView" data-watermark="">
+            <div class="detail-header">
+              <span class="tag">后台分类：快餐</span>
+              <h2>番茄炒蛋</h2>
+              <div class="muted">SOP-KC-001 · 最近更新：2026-09-18 · 查看次数已记录</div>
+            </div>
+            <div class="sop-hero-card">
+              <div>
+                <span class="sop-eyebrow">炒上好菜品标准</span>
+                <h3>番茄炒蛋标准卡</h3>
+                <p>小火滑蛋，番茄炒出砂，出品色泽鲜亮。</p>
+              </div>
+              <div class="sop-score">
+                <b>98</b>
+                <span>标准分</span>
+              </div>
+            </div>
+
+            <div class="sop-module">
+              <div class="module-head">
+                <h3>标准用料</h3>
+                <span>SOP-KC-001</span>
+              </div>
+              <div class="ingredient-grid">
+                <div class="ingredient-card">
+                  <span>主料</span>
+                  <b>番茄 500g</b>
+                  <b>鸡蛋 10个</b>
+                </div>
+                <div class="ingredient-card">
+                  <span>辅料</span>
+                  <b>葱白碎 10g</b>
+                  <b>葱花 5g</b>
+                </div>
+              </div>
+            </div>
+
+            <div class="sop-module accent">
+              <div class="module-head">
+                <h3>制作要点</h3>
+                <span>关键控制</span>
+              </div>
+              <div class="tip-list">
+                <div>全程小火，蛋液不能炒老。</div>
+                <div>番茄需要炒出砂，汤汁自然浓稠。</div>
+              </div>
+            </div>
+
+            <div class="sop-module">
+              <div class="module-head">
+                <h3>制作步骤</h3>
+                <span>4 步完成</span>
+              </div>
+              <div class="step-list">
+                <div class="step-item"><b>1</b><p>热锅冷油，下蛋液小火滑至八成熟，盛出备用。</p></div>
+                <div class="step-item"><b>2</b><p>锅入少许底油，小火下葱白碎炒香，再下番茄炒出砂。</p></div>
+                <div class="step-item"><b>3</b><p>下少许清水，加入盐3g、白糖65g、番茄沙司150g，轻轻拌匀。</p></div>
+                <div class="step-item"><b>4</b><p>下炒好的鸡蛋，勾中芡翻拌均匀，淋亮油后撒葱花出锅。</p></div>
+              </div>
+            </div>
+
+            <div class="sop-module">
+              <div class="module-head">
+                <h3>出品标准</h3>
+                <span>验收项</span>
+              </div>
+              <div class="standard-grid">
+                <div><span>器皿</span><b>10寸白色浅盘</b></div>
+                <div><span>成菜特点</span><b>色泽鲜亮，酸甜平衡</b></div>
+                <div><span>储存方法</span><b>现炒现出</b></div>
+                <div><span>保质期</span><b>当餐出品</b></div>
+              </div>
+            </div>
+            <div class="media-grid">
+              <div class="media-box">主、辅料图片</div>
+              <div class="media-box">配料图片</div>
+              <div class="media-box">成品图片</div>
+            </div>
+            <button class="btn" style="width:100%" id="goVideo">观看教学视频</button>
+          </section>
+
+          <section class="mini-view watermark-area" id="videoView" data-watermark="">
+            <div class="detail-header">
+              <span class="tag">视频学习</span>
+              <h2>番茄炒蛋标准操作</h2>
+              <div class="muted">播放会被计入后台行为统计。</div>
+            </div>
+            <div class="video-box">
+              <div>
+                <div class="play">▶</div>
+                <b>教学视频占位</b>
+                <div style="margin-top:8px;color:#dbe9e2">已播放 2 次 · 学习进度 68%</div>
+              </div>
+            </div>
+            <div class="notice" style="margin-top:12px">
+              页面已叠加手机号、姓名、时间水印，并记录访问与播放。真实业务中仍需结合微信端能力、权限控制和追责日志降低泄露风险。
+            </div>
+            <button class="btn" style="width:100%;margin-top:12px" id="finishVideo">标记为已学习</button>
+          </section>
+
+          <section class="mini-view" id="mineView">
+            <div class="detail-header">
+              <h2>我的学习</h2>
+              <div class="muted">李明 · 138****1024 · 快餐组</div>
+            </div>
+            <div class="card">
+              <table>
+                <tbody>
+                  <tr><td>今日查看</td><td>4 个 SOP</td></tr>
+                  <tr><td>视频播放</td><td>2 次</td></tr>
+                  <tr><td>最近学习</td><td>番茄炒蛋</td></tr>
+                  <tr><td>后台管理员</td><td>138-0000-0000</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+        <div class="mini-bottom">
+          <button class="active" data-mini="homeView">首页</button>
+          <button data-mini="detailView">SOP</button>
+          <button data-mini="mineView">我的</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="side-notes">
+      <h1>微信小程序演示原型</h1>
+      <p>这个页面模拟厨师或学员端。分类来自后台维护的分类，不在小程序写死；手机号授权通过后才能查看内容；未匹配时展示后台管理员联系电话。</p>
+      <div class="demo-flow">
+        <div class="card"><b>演示 1：授权登录</b><br><span class="muted">点击“使用已授权手机号登录”进入系统；点击“模拟未授权手机号”查看拦截提示。</span></div>
+        <div class="card"><b>演示 2：后台分类同步</b><br><span class="muted">首页分类展示为快餐、烧腊、面店，对应后台分类管理。</span></div>
+        <div class="card"><b>演示 3：查看 SOP 与视频</b><br><span class="muted">进入番茄炒蛋详情后可看到卡片化标准、图片区域、视频学习和动态水印。</span></div>
+      </div>
+      <p><a class="demo-link" href="admin.html">返回管理后台原型</a></p>
+    </section>
+  </main>
+
+  <script>
+    const categories = ['快餐', '烧腊', '面店'];
+    const dishes = [
+      { name: '番茄炒蛋', category: '快餐', code: 'SOP-KC-001', desc: '小火滑蛋，番茄炒出砂，酸甜平衡。', count: '12次查看' },
+      { name: '快餐例汤', category: '快餐', code: 'SOP-KC-014', desc: '统一汤底、盐度和出品温度。', count: '8次查看' },
+      { name: '蜜汁叉烧', category: '烧腊', code: 'SOP-SL-006', desc: '腌制、挂炉、出品切配标准。', count: '7次查看' },
+      { name: '烧鸭切配', category: '烧腊', code: 'SOP-SL-011', desc: '皮肉比例、摆盘和蘸料配置。', count: '5次查看' },
+      { name: '云吞面汤底', category: '面店', code: 'SOP-MD-003', desc: '汤底熬制、面量、出品时长。', count: '21次查看' }
+    ];
+    let currentCategory = categories[0];
+    const titles = {
+      loginView: '菜品SOP',
+      homeView: '菜品SOP',
+      detailView: 'SOP详情',
+      videoView: '视频学习',
+      mineView: '我的学习'
+    };
+
+    function watermarkText() {
+      const now = new Date();
+      const stamp = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0') + ' ' + String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+      return Array(36).fill('李明 138****1024 ' + stamp).join('    ');
+    }
+
+    function setView(id) {
+      document.querySelectorAll('.mini-view').forEach(view => view.classList.toggle('active', view.id === id));
+      document.querySelector('#miniTitle').textContent = titles[id];
+      document.querySelectorAll('.mini-bottom button').forEach(button => button.classList.toggle('active', button.dataset.mini === id || (id === 'videoView' && button.dataset.mini === 'detailView')));
+      document.querySelectorAll('.watermark-area').forEach(area => area.dataset.watermark = watermarkText());
+    }
+
+    function renderCategories() {
+      const tabs = document.querySelector('#categoryTabs');
+      tabs.innerHTML = categories.map(category => `<button class="${category === currentCategory ? 'active' : ''}" data-category="${category}">${category}</button>`).join('');
+    }
+
+    function renderDishes() {
+      const list = document.querySelector('#dishList');
+      list.innerHTML = dishes.filter(dish => dish.category === currentCategory).map(dish => `
+        <article class="dish-card" data-open-detail="${dish.name}">
+          <div class="dish-thumb">${dish.category}</div>
+          <div>
+            <h3>${dish.name}</h3>
+            <p>${dish.code} · ${dish.desc}</p>
+            <span class="tag">${dish.count}</span>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    document.querySelector('#loginOk').addEventListener('click', () => setView('homeView'));
+    document.querySelector('#loginFail').addEventListener('click', () => {
+      document.querySelector('#loginNotice').hidden = false;
+    });
+    document.querySelector('#goVideo').addEventListener('click', () => setView('videoView'));
+    document.querySelector('#finishVideo').addEventListener('click', event => {
+      event.currentTarget.textContent = '已完成学习，后台已记录';
+      event.currentTarget.classList.add('secondary');
+    });
+    document.querySelector('#backBtn').addEventListener('click', () => setView(document.querySelector('#homeView').classList.contains('active') ? 'loginView' : 'homeView'));
+
+    document.addEventListener('click', event => {
+      const tab = event.target.closest('[data-category]');
+      if (tab) {
+        currentCategory = tab.dataset.category;
+        renderCategories();
+        renderDishes();
+      }
+      const detail = event.target.closest('[data-open-detail]');
+      if (detail) setView('detailView');
+      const mini = event.target.closest('[data-mini]');
+      if (mini) setView(mini.dataset.mini);
+    });
+
+    renderCategories();
+    renderDishes();
+    setInterval(() => document.querySelectorAll('.watermark-area').forEach(area => area.dataset.watermark = watermarkText()), 30000);
+  </script>
+</body>
+</html>
